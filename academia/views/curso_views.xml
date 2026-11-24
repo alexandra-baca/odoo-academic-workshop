@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE CURSOS -->
+    <!-- ============================== -->
+
+    <record id="view_academia_curso_tree" model="ir.ui.view">
+        <field name="name">academia.curso.tree</field>
+        <field name="model">academia.curso</field>
+        <field name="arch" type="xml">
+            <tree string="Cursos">
+                <field name="nombre"/>
+                <field name="descripcion"/>
+                <field name="duracion"/>
+                <field name="precio"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="profesor_id"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO CURSO -->
+    <!-- ============================== -->
+
+    <record id="view_academia_curso_form" model="ir.ui.view">
+        <field name="name">academia.curso.form</field>
+        <field name="model">academia.curso</field>
+        <field name="arch" type="xml">
+            <form string="Curso">
+                <sheet>
+
+                    <group>
+                        <group string="Información del curso">
+                            <field name="nombre"/>
+                            <field name="descripcion"/>
+                            <field name="duracion"/>
+                            <field name="precio"/>
+                        </group>
+
+                        <group string="Planificación">
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="profesor_id"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Alumnos matriculados">
+                            <field name="alumno_ids">
+                                <tree>
+                                    <field name="nombre"/>
+                                    <field name="apellidos"/>
+                                    <field name="dni"/>
+                                    <field name="email"/>
+                                    <field name="telefono"/>
+                                    <field name="activo"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE CURSOS -->
+    <!-- ============================== -->
+
+    <record id="action_academia_curso"
+            model="ir.actions.act_window">
+        <field name="name">Cursos</field>
+        <field name="res_model">academia.curso</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ DE CURSOS -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_curso"
+        name="Cursos"
+        parent="menu_academia_root"
+        action="action_academia_curso"
+        sequence="30"
+    />
+
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE PROFESORES -->
+    <!-- ============================== -->
+
+    <record id="view_academia_profesor_tree" model="ir.ui.view">
+        <field name="name">academia.profesor.tree</field>
+        <field name="model">academia.profesor</field>
+        <field name="arch" type="xml">
+            <tree string="Profesores">
+                <field name="nombre"/>
+                <field name="apellidos"/>
+                <field name="especialidad"/>
+                <field name="email"/>
+                <field name="telefono"/>
+                <field name="fecha_contratacion"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO PROFESOR -->
+    <!-- ============================== -->
+
+    <record id="view_academia_profesor_form" model="ir.ui.view">
+        <field name="name">academia.profesor.form</field>
+        <field name="model">academia.profesor</field>
+        <field name="arch" type="xml">
+            <form string="Profesor">
+                <sheet>
+
+                    <group>
+                        <group string="Datos personales">
+                            <field name="nombre"/>
+                            <field name="apellidos"/>
+                            <field name="especialidad"/>
+                        </group>
+
+                        <group string="Información de contacto">
+                            <field name="email"/>
+                            <field name="telefono"/>
+                            <field name="fecha_contratacion"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Cursos">
+                            <field name="curso_ids">
+                                <tree>
+                                    <field name="nombre"/>
+                                    <field name="duracion"/>
+                                    <field name="precio"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="activo"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE PROFESORES -->
+    <!-- ============================== -->
+
+    <record id="action_academia_profesor"
+            model="ir.actions.act_window">
+        <field name="name">Profesores</field>
+        <field name="res_model">academia.profesor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ DE PROFESORES -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_profesor"
+        name="Profesores"
+        parent="menu_academia_root"
+        action="action_academia_profesor"
+        sequence="20"
+    />
+
+</odoo>

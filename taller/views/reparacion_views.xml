@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_reparacion_list" model="ir.ui.view">
+        <field name="name">taller.reparacion.list</field>
+        <field name="model">taller.reparacion</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="description"/>
+                 <field name="fecha_entrada"/>
+                 <field name="fecha_salida"/>
+                 <field name="coste"/>
+             </tree>
+         </field>
+    </record>
+
+    <record id="view_reparacion_form" model="ir.ui.view">
+        <field name="name">taller.reparacion.form</field>
+        <field name="model">taller.reparacion</field>
+         <field name="arch" type="xml">
+             <form>
+                 <sheet>
+                     <group>
+                         <field name="description"/>
+                         <field name="fecha_entrada"/>
+                         <field name="fecha_salida"/>
+                         <field name="coste"/>
+                         <field name="activo"/>
+                     </group>
+                 </sheet>
+             </form>
+         </field>
+    </record>
+
+    <record id="action_reparaciones" model="ir.actions.act_window">
+        <field name="name">Reparaciones</field>
+        <field name="res_model">taller.reparacion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_reparaciones" name="Reparaciones" parent="menu_taller_root" action="action_reparaciones"/>
+</odoo>

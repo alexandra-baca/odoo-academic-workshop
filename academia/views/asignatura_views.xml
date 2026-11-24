@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE ASIGNATURAS -->
+    <!-- ============================== -->
+
+    <record id="view_academia_asignatura_tree" model="ir.ui.view">
+        <field name="name">academia.asignatura.tree</field>
+        <field name="model">academia.asignatura</field>
+        <field name="arch" type="xml">
+            <tree string="Asignaturas">
+                <field name="nombre"/>
+                <field name="codigo"/>
+                <field name="descripcion"/>
+                <field name="duracion_horas"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO ASIGNATURA -->
+    <!-- ============================== -->
+
+    <record id="view_academia_asignatura_form" model="ir.ui.view">
+        <field name="name">academia.asignatura.form</field>
+        <field name="model">academia.asignatura</field>
+        <field name="arch" type="xml">
+            <form string="Asignatura">
+                <sheet>
+
+                    <group>
+                        <group string="Información de la asignatura">
+                            <field name="nombre"/>
+                            <field name="codigo"/>
+                            <field name="duracion_horas"/>
+                            <field name="activo"/>
+                        </group>
+
+                        <group string="Descripción">
+                            <field name="descripcion"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Alumnos matriculados">
+                            <field name="alumno_ids">
+                                <tree>
+                                    <field name="nombre"/>
+                                    <field name="apellidos"/>
+                                    <field name="dni"/>
+                                    <field name="email"/>
+                                    <field name="telefono"/>
+                                    <field name="activo"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE ASIGNATURAS -->
+    <!-- ============================== -->
+
+    <record id="action_academia_asignatura"
+            model="ir.actions.act_window">
+        <field name="name">Asignaturas</field>
+        <field name="res_model">academia.asignatura</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ DE ASIGNATURAS -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_asignatura"
+        name="Asignaturas"
+        parent="menu_academia_root"
+        action="action_academia_asignatura"
+        sequence="40"
+    />
+
+</odoo>

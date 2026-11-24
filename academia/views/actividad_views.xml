@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE ACTIVIDADES -->
+    <!-- ============================== -->
+
+    <record id="view_academia_actividad_tree" model="ir.ui.view">
+        <field name="name">academia.actividad.tree</field>
+        <field name="model">academia.actividad</field>
+        <field name="arch" type="xml">
+            <tree string="Actividades">
+                <field name="nombre"/>
+                <field name="descripcion"/>
+                <field name="fecha"/>
+                <field name="hora"/>
+                <field name="lugar"/>
+                <field name="tipo"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO ACTIVIDAD -->
+    <!-- ============================== -->
+
+    <record id="view_academia_actividad_form" model="ir.ui.view">
+        <field name="name">academia.actividad.form</field>
+        <field name="model">academia.actividad</field>
+        <field name="arch" type="xml">
+            <form string="Actividad">
+                <sheet>
+
+                    <group>
+                        <group string="Información de la actividad">
+                            <field name="nombre"/>
+                            <field name="tipo"/>
+                            <field name="descripcion"/>
+                        </group>
+
+                        <group string="Planificación">
+                            <field name="fecha"/>
+                            <field name="hora"/>
+                            <field name="lugar"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE ACTIVIDADES -->
+    <!-- ============================== -->
+
+    <record id="action_academia_actividad"
+            model="ir.actions.act_window">
+        <field name="name">Actividades</field>
+        <field name="res_model">academia.actividad</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ DE ACTIVIDADES -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_actividad"
+        name="Actividades"
+        parent="menu_academia_root"
+        action="action_academia_actividad"
+        sequence="60"
+    />
+
+</odoo>

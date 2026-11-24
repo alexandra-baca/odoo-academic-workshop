@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_vehiculo_list" model="ir.ui.view">
+        <field name="name">taller.vehiculo.list</field>
+        <field name="model">taller.vehiculo</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="matricula"/>
+                 <field name="marca"/>
+                 <field name="modelo"/>
+             </tree>
+         </field>
+    </record>
+
+    <record id="view_vehiculo_form" model="ir.ui.view">
+        <field name="name">taller.vehiculo.form</field>
+        <field name="model">taller.vehiculo</field>
+         <field name="arch" type="xml">
+             <form>
+                 <sheet>
+                     <group>
+                         <field name="matricula"/>
+                         <field name="marca"/>
+                         <field name="modelo"/>
+                         <field name="anio"/>
+                     </group>
+                 </sheet>
+             </form>
+         </field>
+    </record>
+
+    <record id="action_vehiculos" model="ir.actions.act_window">
+        <field name="name">Vehiculos</field>
+        <field name="res_model">taller.vehiculo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_vehiculos" name="Vehiculos" parent="menu_taller_root" action="action_vehiculos"/>
+</odoo>

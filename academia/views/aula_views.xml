@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE AULAS -->
+    <!-- ============================== -->
+
+    <record id="view_academia_aula_tree" model="ir.ui.view">
+        <field name="name">academia.aula.tree</field>
+        <field name="model">academia.aula</field>
+        <field name="arch" type="xml">
+            <tree string="Aulas">
+                <field name="nombre"/>
+                <field name="codigo"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO AULA -->
+    <!-- ============================== -->
+
+    <record id="view_academia_aula_form" model="ir.ui.view">
+        <field name="name">academia.aula.form</field>
+        <field name="model">academia.aula</field>
+        <field name="arch" type="xml">
+            <form string="Aula">
+                <sheet>
+
+                    <group>
+                        <group string="Información del aula">
+                            <field name="nombre"/>
+                            <field name="codigo"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE AULAS -->
+    <!-- ============================== -->
+
+    <record id="action_academia_aula"
+            model="ir.actions.act_window">
+        <field name="name">Aulas</field>
+        <field name="res_model">academia.aula</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ DE AULAS -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_aula"
+        name="Aulas"
+        parent="menu_academia_root"
+        action="action_academia_aula"
+        sequence="50"
+    />
+
+</odoo>

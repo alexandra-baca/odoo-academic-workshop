@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ============================== -->
+    <!-- VISTA TREE: LISTA DE ALUMNOS -->
+    <!-- ============================== -->
+
+    <record id="view_academia_alumno_tree" model="ir.ui.view">
+        <field name="name">academia.alumno.tree</field>
+        <field name="model">academia.alumno</field>
+        <field name="arch" type="xml">
+            <tree string="Alumnos">
+                <field name="nombre"/>
+                <field name="apellidos"/>
+                <field name="dni"/>
+                <field name="email"/>
+                <field name="telefono"/>
+                <field name="curso_id"/>
+                <field name="activo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- VISTA FORM: FORMULARIO ALUMNO -->
+    <!-- ============================== -->
+
+    <record id="view_academia_alumno_form" model="ir.ui.view">
+        <field name="name">academia.alumno.form</field>
+        <field name="model">academia.alumno</field>
+        <field name="arch" type="xml">
+            <form string="Alumno">
+                <sheet>
+
+                    <group>
+                        <group string="Datos personales">
+                            <field name="nombre"/>
+                            <field name="apellidos"/>
+                            <field name="dni"/>
+                            <field name="fecha_nacimiento"/>
+                        </group>
+
+                        <group string="Contacto">
+                            <field name="telefono"/>
+                            <field name="email"/>
+                            <field name="direccion"/>
+                            <field name="codigo_postal"/>
+                            <field name="ciudad"/>
+                            <field name="provincia"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Información académica">
+                            <field name="curso_id"/>
+                            <field name="asignatura_ids"
+                                   widget="many2many_tags"/>
+                        </group>
+
+                        <group string="Información administrativa">
+                            <field name="fecha_alta"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Observaciones">
+                            <field name="observaciones"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- ACTION: ACCIÓN DE ALUMNOS -->
+    <!-- ============================== -->
+
+    <record id="action_academia_alumno"
+            model="ir.actions.act_window">
+        <field name="name">Alumnos</field>
+        <field name="res_model">academia.alumno</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ============================== -->
+    <!-- MENÚ PRINCIPAL -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_root"
+        name="Academia"
+        sequence="10"
+    />
+
+
+    <!-- ============================== -->
+    <!-- SUBMENÚ ALUMNOS -->
+    <!-- ============================== -->
+
+    <menuitem
+        id="menu_academia_alumno"
+        name="Alumnos"
+        parent="menu_academia_root"
+        action="action_academia_alumno"
+        sequence="10"
+    />
+
+</odoo>
